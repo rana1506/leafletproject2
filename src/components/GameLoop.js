@@ -6,7 +6,7 @@ import {calculateDestinationPoint} from "../NavFormula"
 const duration=10000 //in miliseconds
 function getNextPosition(ship){
   const lastIndex= ship.pcs.length-1
-  var startPoint = { lat: ship.pcs[lastIndex].geocode[0], lng: ship.pcs[lastIndex].geocode[1] };
+  var startPoint = { lat: ship.estimated_position[0], lng: ship.estimated_position[1] };
   var distance= ship.pcs[lastIndex].speed*duration/1000/3600
   var nextPosition = calculateDestinationPoint(startPoint, ship.pcs[lastIndex].course, distance);
   return [ nextPosition.lat, nextPosition.lng]
