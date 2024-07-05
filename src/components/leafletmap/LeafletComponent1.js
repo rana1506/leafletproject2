@@ -1,6 +1,6 @@
-import "../styles.css";
+import "../../styles.css";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Polyline, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Polyline, TileLayer, Tooltip } from "react-leaflet";
 import * as L from "leaflet";
 import { Icon, Popup } from "leaflet";
 import { useSelector } from "react-redux";
@@ -10,15 +10,15 @@ const LeafletComponent = () => {
 
   function getIcon(icontype){    
       const icon= new Icon({
-        iconUrl: require("../img/surface_own.png"),
+        iconUrl: require(`${"../../img/"}${icontype}${".png"}`),
         iconSize: [20, 20],
       }) 
       return icon   
   }
-  const customIcon =new Icon({
+  /* const customIcon =new Icon({
     iconUrl: require("../img/surface_friendly.png"),
     iconSize: [20, 20],
-  });
+  }); */
   
   return (
     <MapContainer center={[21.0, 91.0]} zoom={8}>
@@ -28,7 +28,9 @@ const LeafletComponent = () => {
       />
       {ships.map((ship) => (
         //{customIcon.style.transform += " rotate(20deg)"}
-        <Marker position={ship.estimated_position} icon={getIcon("surface_own")} opacity={0.7} title={ship.name} alt="TTT"/>
+        <Marker position={ship.estimated_position} icon={getIcon("surface_own")} opacity={0.7}   >
+          <Tooltip permanent>{ship.name}</Tooltip>
+        </Marker>
         
         
       ))}

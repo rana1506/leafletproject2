@@ -34,6 +34,9 @@
     display: flex;
     justify-content: space-between;
   }
+  .header div{
+    display: flex;
+  }
   .addnewship {
     position: fixed;
     z-index: 5;

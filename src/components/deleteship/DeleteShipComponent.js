@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeShip } from "../features/shiplist/shiplistSlice";
+import { removeShip } from "../../features/shiplist/shiplistSlice";
 
 function DeleteShipComponent(props) {   
     const count = useSelector((state) => state.ship.count);

@@ -6,6 +6,8 @@ const initialState = {
     {
       id: "1",
       name: "MADHUMATI",
+      type: "Surface",
+      classified: "Own",
       estimated_position:[21, 89],
       pcs:[
         {
@@ -29,6 +31,8 @@ const initialState = {
     {
       id: "2",
       name: "DURJOY",
+      type: "Surface",
+      classified: "Own",
       estimated_position:[21.5, 91.5],
       pcs:[
         {
@@ -44,6 +48,8 @@ const initialState = {
     {
       id: "3",
       name: "SAGOR",
+      type: "Surface",
+      classified: "Own",
       estimated_position:[22.0, 92.0],
       pcs:[
         {
@@ -59,6 +65,8 @@ const initialState = {
     {
       id: "4",
       name: "NIRMUL",
+      type: "Surface",
+      classified: "Own",
       estimated_position:[20.50, 90.50],      
       pcs:[
         {
@@ -74,6 +82,8 @@ const initialState = {
     {
       id: "5",
       name: "SHAPLA",
+      type: "Surface",
+      classified: "Own",
       estimated_position:[20.0, 89.0],
       pcs:[
         {
@@ -99,6 +109,7 @@ export const shiplistSlice = createSlice({
       const ship = {
         id: (Math.random() * 100).toString(),
         name: action.payload.name,
+        type: action.payload.type,
         estimated_position: [action.payload.lat, action.payload.lon],
         pcs:[
           {
@@ -124,13 +135,16 @@ export const shiplistSlice = createSlice({
       state.selectedShipId=action.payload;
       state.selectedShipName=state.ships.find(ship=>{return(ship.id===state.selectedShipId)}).name
     },
-    editShipPosition:(state, action)=>{console.log(action.payload)  
+    editShipPosition:(state, action)=>{
       const index = state.ships.findIndex(obj => { return obj.id === action.payload.id; });
-      //const pcsIndex= state.ships[index].pcs.length-1    
-      //state.ships[index].pcs[pcsIndex].geocode = action.payload.geocode  
       state.ships[index].estimated_position = action.payload.geocode    
     },
-    addPCS:(state, action)=>{console.log(action.payload)  
+    editShip:(state, action)=>{      
+      const index = state.ships.findIndex(obj => { return obj.id === action.payload.id; });      
+      state.ships[index].name = action.payload.name
+      state.ships[index].type = action.payload.type  
+    },
+    addPCS:(state, action)=>{      
       const index = state.ships.findIndex(obj => { return obj.id === action.payload.id; });
       const new_pcs={        
           id: (Math.random() * 100).toString(),
@@ -141,10 +155,11 @@ export const shiplistSlice = createSlice({
           time: action.payload.time,        
       }
       state.ships[index].pcs.push(new_pcs);
+      state.ships[index].estimated_position = new_pcs.geocode 
     },
   },
 });
 
-export const { addShip, removeShip, changeSelectedShip, editShipPosition } = shiplistSlice.actions;
+export const { addShip, removeShip, changeSelectedShip, editShipPosition, addPCS, editShip } = shiplistSlice.actions;
 
 export default shiplistSlice.reducer;

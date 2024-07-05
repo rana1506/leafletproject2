@@ -10,7 +10,8 @@ function DisplayShip() {
     <div>
         <p>Id:{item.id}</p>
         <p>Name:{item.name}</p>
-        <p>Location:{item.pcs[item.pcs.length-1].geocode}</p>
+        <p>Type:{item.type}</p>
+        <p>Location:{item.estimated_position}</p>
         <p>Course:{item.pcs[item.pcs.length-1].course}</p>
         <p>Speed:{item.pcs[item.pcs.length-1].speed}</p>
         <p>Status:{item.pcs[item.pcs.length-1].status}</p>

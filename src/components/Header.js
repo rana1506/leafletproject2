@@ -1,6 +1,8 @@
 import SelectedShipDropDownList from './SelectedShipDropDownList'
-import NewShipPopup from './NewShipPopup';
-import DeleteShipPopup from './DeleteShipPopup';
+import NewShipPopup from './addship/NewShipPopup';
+import DeleteShipPopup from './deleteship/DeleteShipPopup';
+import EditShipPopup from './editship/EditShipPopup';
+import AddPcsPopup from './addpcs/AddPcsPopup'
 function Header() { 
 
   return (
@@ -8,11 +10,10 @@ function Header() {
       <div>
         LOGO
       </div>      
-      <NewShipPopup/>      
-      <div>
-        Selected Ship:
-        <SelectedShipDropDownList/>
-      </div>
+      <NewShipPopup/>   
+      <SelectedShipDropDownList/>      
+      <EditShipPopup/>
+      <AddPcsPopup/>
       <DeleteShipPopup/>
   
     </div> 

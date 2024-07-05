@@ -1,6 +1,5 @@
 import React from 'react'
-import ShipComponent from './ShipComponent' 
-import DisplayShip from './DisplayShip'
+import DisplayShip from './displayship/DisplayShip'
 
 function Box2() {
   return (
