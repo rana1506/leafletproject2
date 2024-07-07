@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { editShip } from "../../features/shiplist/shiplistSlice";
 
-function EditShipComponent(props) {
+function EditPcsComponent(props) {
     const selectedShipId = useSelector((state) => state.ship.selectedShipId)
     const item = useSelector((state) => state.ship.ships).find(ship=>{return(ship.id===selectedShipId)})
 
@@ -40,4 +40,4 @@ function EditShipComponent(props) {
     );
 }
 
-export default EditShipComponent
+export default EditPcsComponent

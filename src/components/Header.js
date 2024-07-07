@@ -3,6 +3,8 @@ import NewShipPopup from './addship/NewShipPopup';
 import DeleteShipPopup from './deleteship/DeleteShipPopup';
 import EditShipPopup from './editship/EditShipPopup';
 import AddPcsPopup from './addpcs/AddPcsPopup'
+import ViewPcsPopup from './viewPcs/ViewPcsPopup';
+
 function Header() { 
 
   return (
@@ -13,6 +15,7 @@ function Header() {
       <NewShipPopup/>   
       <SelectedShipDropDownList/>      
       <EditShipPopup/>
+      <ViewPcsPopup/>
       <AddPcsPopup/>
       <DeleteShipPopup/>
   
