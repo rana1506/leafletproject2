@@ -1,41 +1,59 @@
 import { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { editShip } from "../../features/shiplist/shiplistSlice";
+import { editPcs } from "../../features/shiplist/shiplistSlice";
 
 function EditPcsComponent(props) {
     const selectedShipId = useSelector((state) => state.ship.selectedShipId)
-    const item = useSelector((state) => state.ship.ships).find(ship=>{return(ship.id===selectedShipId)})
-
+    const selectedShipName = useSelector((state) => state.ship.selectedShipName)
+    const selectedPcs=useSelector((state) => state.ship.ships).find(ship=>{return(ship.id===selectedShipId)}).pcs.find(p=>{return(p.id.toString()===props.selectedPcs.toString())})
     const initialValues = {
-        id: item.id,
-        name: item.name,
-        type: item.type,
-      };
-
+        shipid: selectedShipId,
+        pcsid: selectedPcs.id,
+        lat: selectedPcs.geocode[0],
+        lon: selectedPcs.geocode[1],
+        course: selectedPcs.course,
+        speed: selectedPcs.speed,
+        status: selectedPcs.status,
+        time: selectedPcs.time,
+      }
     const [values, setValues] = useState(initialValues);
     const dispatch = useDispatch();
 
-    const handleAddPcs = (e) => {
-        e.preventDefault();
-        dispatch(editShip(values));
+    const handleEditPcs = (e) => {
+        e.preventDefault();        
+        if(values.status==="Anchored")
+            values.speed=0
+        dispatch(editPcs(values));
         props.toggle();
     };
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setValues({...values, [name]: value});
+        setValues({ ...values,[name]: value,});
     };
+    
     return (
-        <div className="addnewship">
-        <h1>Edit Ship:{item.name}</h1>
-            <form className="App-form" onSubmit={handleAddPcs}>                
-                Name:   <input  type="text"   name="name"  value={values.name}  onChange={handleInputChange} />                            
-                <br />
-                Type:   <input  type="text"   name="type"  value={values.type}  onChange={handleInputChange} />                            
-                <br />
-                <button type="submit">OK</button>
-                <button onClick={props.toggle}>Close</button>
+        <div className="addnewship1">
+            <h1>Edit PCS:{selectedShipName}</h1>
+            <form className="App-form" onSubmit={handleEditPcs} >  
+            Latitude:   <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />
+            <br />
+            Longitude:  <input  type="number"   name="lon"  value={values.lon}  onChange={handleInputChange} />
+            <br />
+            Course:     <input  type="number"   name="course"  value={values.course}  onChange={handleInputChange} />
+            <br />
+            Speed:      <input  type="number"   name="speed"  value={values.speed}  onChange={handleInputChange} />
+            <br/>
+            {/* Status:     <input  type="text"     name="status" value={values.status} onChange={handleInputChange} /> */}
+            Status:     <select name="status" value={values.status} onChange={handleInputChange}>                                
+                            <option value="Anchored" >Anchored</option>
+                            <option value="Underway"> Underway</option>
+                        </select>
+            <br />
+            Time:       <input  type="text"   name="time"  value={values.time}  onChange={handleInputChange} />
+            <br />
+            <button type="submit">OK</button>
+            <button onClick={props.toggle}>Close</button>
             </form>
-        
         </div>
     );
 }

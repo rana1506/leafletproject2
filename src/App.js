@@ -10,8 +10,8 @@ export default function App() {
   
   return (
     <div className="App">   
-    <GameLoop/>  
-    {/*<ForExercise/>*/}        
+      <GameLoop/>  
+      {/*<ForExercise/>*/}        
       {<Header/>}
       <div className="box1">
         <LeafletComponent />

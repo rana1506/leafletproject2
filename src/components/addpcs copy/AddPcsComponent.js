@@ -1,4 +1,4 @@
-import { useState, ReactModal } from "react";
+import { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { addPCS } from "../../features/shiplist/shiplistSlice";
 
@@ -34,7 +34,7 @@ function AddPcsComponent(props) {
         setValues({...values, [name]: value});
     };
     return (
-        <div className="addnewship">            
+        <div className="addnewship">
             <h1>Add PCS:{values.name}</h1>
             <form className="App-form" onSubmit={handleAddPcs}>                 
                 Latitude:   <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />

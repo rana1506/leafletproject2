@@ -30,7 +30,7 @@ function NewShipComponent(props) {
     };
     return (
         <div className="addnewship">
-        <h1>Add Ship</h1>
+            <h1>Add Ship</h1>
             <form className="App-form" onSubmit={handleAddShip}>
                 Name:       <input  type="text"     name="name" value={values.name} onChange={handleInputChange} />
                 <br />

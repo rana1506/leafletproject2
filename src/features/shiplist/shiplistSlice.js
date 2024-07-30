@@ -23,7 +23,7 @@ const initialState = {
           geocode: [21.7, 89.7],
           course: 135,
           speed: 6000,
-          status: "Underway",
+          status: "Anchored",
           time: 1400,
         },
       ]
@@ -74,7 +74,7 @@ const initialState = {
           geocode: [20.50, 90.50],
           course: 180,
           speed: 2500,
-          status: "Underway",
+          status: "Anchored",
           time: 1100,
         },
       ]
@@ -157,9 +157,18 @@ export const shiplistSlice = createSlice({
       state.ships[index].pcs.push(new_pcs);
       state.ships[index].estimated_position = new_pcs.geocode 
     },
+    editPcs:(state, action)=>{
+      const shipindex = state.ships.findIndex(obj => { return obj.id === state.selectedShipId; });       
+      const pcsindex = state.ships[shipindex].pcs.findIndex(obj => { return obj.id === action.payload.pcsid; });      
+      state.ships[shipindex].pcs[pcsindex].geocode = [action.payload.lat, action.payload.lon]            
+      state.ships[shipindex].pcs[pcsindex].course = action.payload.course            
+      state.ships[shipindex].pcs[pcsindex].speed = action.payload.speed             
+      state.ships[shipindex].pcs[pcsindex].status = action.payload.status            
+      state.ships[shipindex].pcs[pcsindex].time = action.payload.time      
+    },
   },
 });
 
-export const { addShip, removeShip, changeSelectedShip, editShipPosition, addPCS, editShip } = shiplistSlice.actions;
+export const { addShip, removeShip, changeSelectedShip, editShipPosition, addPCS, editShip, editPcs } = shiplistSlice.actions;
 
 export default shiplistSlice.reducer;

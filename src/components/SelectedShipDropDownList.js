@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch} from "react-redux";
 import { changeSelectedShip } from "../features/shiplist/shiplistSlice";
 
-function SelectedShipDropDownList() {
+function SelectedShipDropDownList(props) {
   const ships = useSelector((state) => state.ship.ships)
   const selectedShipId = useSelector((state) => state.ship.selectedShipId)
   
