@@ -29,34 +29,50 @@ function NewShipComponent(props) {
         setValues({ ...values,[name]: value,});
     };
     return (
-        <div className="addnewship">
-        <h1>Add Ship</h1>
+        <div className="popup">
+            <h3>Add Ship</h3>
             <form className="App-form" onSubmit={handleAddShip}>
-                Name:       <input  type="text"     name="name" value={values.name} onChange={handleInputChange} />
+                <div className='inputfield'>
+                    <p>Name:</p> 
+                    <input  type="text"     name="name" value={values.name} onChange={handleInputChange} />
+                </div>
+                <div className='inputfield'>
+                    <p>Type:</p> 
+                    <input  type="text"     name="type" value={values.type} onChange={handleInputChange} />
+                </div>   
+                <div className='inputfield'>
+                    <p>Latitude:</p> 
+                    <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />
+                </div> 
+                <div className='inputfield'>
+                    <p>Longitude:</p> 
+                    <input  type="number"   name="lon"  value={values.lon}  onChange={handleInputChange} />
+                </div> 
+                <div className='inputfield'>
+                    <p>Course:</p> 
+                    <input  type="number"   name="course"  value={values.course}  onChange={handleInputChange} />
+                </div>
+                <div className='inputfield'>
+                    <p>Speed:</p> 
+                    <input  type="number"   name="speed"  value={values.speed}  onChange={handleInputChange} />
+                </div>
+                <div className='inputfield'>
+                    <p>Status:</p> 
+                    <select name="status" value={values.status} onChange={handleInputChange}>                                
+                        <option value="Anchored" >Anchored</option>
+                        <option value="Underway"> Underway</option>
+                    </select>
+                </div>
+                <div className='inputfield'>
+                        <p>Time:</p> 
+                        <input  type="text"   name="time"  value={values.time}  onChange={handleInputChange} />
+                    </div>                
                 <br />
-                Type:       <input  type="text"     name="type" value={values.type} onChange={handleInputChange} />
-                <br />
-                Latitude:   <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />
-                <br />
-                Longitude:  <input  type="number"   name="lon"  value={values.lon}  onChange={handleInputChange} />
-                <br />
-                Course:     <input  type="number"   name="course"  value={values.course}  onChange={handleInputChange} />
-                <br />
-                Speed:      <input  type="number"   name="speed"  value={values.speed}  onChange={handleInputChange} />
-                <br/>
-                {/* Status:     <input  type="text"     name="status" value={values.status} onChange={handleInputChange} /> */}
-                Status:     <select name="status" value={values.status} onChange={handleInputChange}>                                
-                                <option value="Anchored" >Anchored</option>
-                                <option value="Underway"> Underway</option>
-                            </select>
-                <br />
-                Time:       <input  type="text"   name="time"  value={values.time}  onChange={handleInputChange} />
-                <br />
-                <br />
-                <button type="submit">ADD SHIP</button>
-                <button onClick={props.toggle}>Close</button>
-            </form>
-        
+                <div className='inputfield'>
+                    <button type="submit">ADD SHIP</button>
+                    <button onClick={props.toggle}>Close</button>
+                </div>
+            </form>        
         </div>
     );
 }

@@ -14,11 +14,17 @@ function DeleteShipComponent(props) {
       };
       if(count>1)
             return (        
-                <div className="addnewship">
-                    <h1>Delete Ship:{selectedShipName}</h1>            
+                <div className="popup">
+                    <h3>Delete Ship:{selectedShipName}</h3>            
+                    <br/>
                     Are you sure to delete?
+                    <br/><br/>                    
+                    <div className='inputfield'>
                     <button onClick={handleDeleteShipDone}>Sure Delete</button>
                     <button onClick={props.toggle}>Close</button>
+                    </div>
+
+                    
                 </div>
             );
 }

@@ -25,15 +25,21 @@ function EditShipComponent(props) {
         setValues({...values, [name]: value});
     };
     return (
-        <div className="addnewship">
-        <h1>Edit Ship:{item.name}</h1>
-            <form className="App-form" onSubmit={handleAddPcs}>                
-                Name:   <input  type="text"   name="name"  value={values.name}  onChange={handleInputChange} />                            
-                <br />
-                Type:   <input  type="text"   name="type"  value={values.type}  onChange={handleInputChange} />                            
-                <br />
-                <button type="submit">OK</button>
-                <button onClick={props.toggle}>Close</button>
+        <div className="popup">
+            <h3>Edit Ship:{item.name}</h3>
+            <form className="inputform" onSubmit={handleAddPcs}>  
+                <div className='inputfield'>
+                        <p>Name:</p> 
+                        <input  type="text"   name="name"  value={values.name}  onChange={handleInputChange} />
+                </div>              
+                <div className='inputfield'>
+                    <p>Type:</p> 
+                    <input  type="text"   name="type"  value={values.type}  onChange={handleInputChange} /> 
+                </div>
+                <div className='inputfield'>
+                    <button type="submit">OK</button>
+                    <button onClick={props.toggle}>Close</button>
+                </div>
             </form>
         
         </div>

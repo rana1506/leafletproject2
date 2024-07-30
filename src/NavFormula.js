@@ -30,4 +30,19 @@ export function calculateDestinationPoint(startPoint, course, distance) {
 //var nextPosition = calculateDestinationPoint(startPoint, course, distance);
 //console.log("Next position:", nextPosition);
    
- 
+export function readableLocation(position){
+    var lt=""
+    var ln=""
+    var lat=Math.round(position[0]*100)/100
+    var lon=Math.round(position[1]*100)/100
+    if(lat<0)
+        lt=-1*lat+" S"
+    else 
+        lt=lat+" N"
+
+    if(lon<0)
+        ln=-1*lon+" W"
+    else 
+        ln=lon+" E"
+    return lt+" "+ln
+}

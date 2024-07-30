@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactModal } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { addPCS } from "../../features/shiplist/shiplistSlice";
 
@@ -34,31 +34,42 @@ function AddPcsComponent(props) {
         setValues({...values, [name]: value});
     };
     return (
-        <div className="addnewship">
-        <h1>Add PCS:{values.name}</h1>
-            <form className="App-form" onSubmit={handleAddPcs}>                
-                Latitude:   <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />
-                <br />
-                Longitude:  <input  type="number"   name="lon"  value={values.lon}  onChange={handleInputChange} />
-                <br />
-                Course:     <input  type="number"   name="course"  value={values.course}  onChange={handleInputChange} />
-                <br />
-                Speed:      <input  type="number"   name="speed"  value={values.speed}  onChange={handleInputChange} />
-                <br/>
-                {/* Status:     <input  type="text"     name="status" value={values.status} onChange={handleInputChange} /> */}
-                <br />
-                Status:     <select name="status" value={values.status} onChange={handleInputChange}>                                
-                                <option value="Anchored" >Anchored</option>
-                                <option value="Underway"> Underway</option>
-                            </select>
-                <br />
-                Time:       <input  type="text"   name="time"  value={values.time}  onChange={handleInputChange} />
-                <br />
-                <br />
-                <button type="submit">ADD</button>
-                <button onClick={props.toggle}>Close</button>
+        <div className="popup">            
+            <h3>Add PCS:{values.name}</h3>
+            <form className="inputform" onSubmit={handleAddPcs}> 
+                <div className='inputfield'>
+                        <p>Latitude:</p> 
+                        <input  type="number"   name="lat"  value={values.lat}  onChange={handleInputChange} />
+                </div>
+                <div className='inputfield'>
+                        <p>Longitude:</p> 
+                        <input  type="number"   name="lon"  value={values.lon}  onChange={handleInputChange} />
+                </div>
+                <div className='inputfield'>
+                        <p>Course:</p> 
+                        <input  type="number"   name="course"  value={values.course}  onChange={handleInputChange} />
+                    </div>
+                <div className='inputfield'>
+                    <p>Speed:</p> 
+                    <input  type="number"   name="speed"  value={values.speed}  onChange={handleInputChange} />
+                </div> 
+                <div className='inputfield'>
+                        <p>Status:</p> 
+                        <select name="status" value={values.status} onChange={handleInputChange}>                                
+                            <option value="Anchored" >Anchored</option>
+                            <option value="Underway"> Underway</option>
+                        </select>
+                    </div>
+                    <div className='inputfield'>
+                        <p>Time:</p> 
+                        <input  type="text"   name="time"  value={values.time}  onChange={handleInputChange} />
+                    </div>
+                    <div className='inputfield'>
+                        <button type="submit">ADD</button>
+                        <button onClick={props.toggle}>Close</button>
+                    </div>
+                
             </form>
-        
         </div>
     );
 }

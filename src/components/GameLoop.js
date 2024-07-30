@@ -34,5 +34,9 @@ function GameLoop() {
     </div>
   )
 }
+function fun(){
+  const x=3.14678
+  x=Math.round(x)
+}
 
 export default GameLoop

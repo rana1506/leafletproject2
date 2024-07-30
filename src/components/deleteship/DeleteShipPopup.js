@@ -1,15 +1,20 @@
 import React,{ useState } from 'react'
 import DeleteShipComponent from './DeleteShipComponent';
-function DeleteShipPopup() {
+function DeleteShipPopup(props) {
     const [seen, setSeen] = useState(false)
 
     function togglePop () {
         setSeen(!seen);
+        !seen? props.updateActivrMenu(6):props.updateActivrMenu(0)
     };
 
     return (
         <div>
-            <button onClick={togglePop}>Delete Ship</button>
+            { (props.activeMenu===6 || props.activeMenu===0)?
+                <button className='button-64' onClick={togglePop}>Delete Ship</button>
+                :
+                <button className='button-64' disabled onClick={togglePop}>Delete Ship</button>
+            }
             {seen ? <DeleteShipComponent toggle={togglePop} /> : null}
         </div>
     )

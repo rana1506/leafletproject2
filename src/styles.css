@@ -31,20 +31,103 @@
     z-index: 5;
   }
   .header{
+    height: 10vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(243, 239, 234);
   }
   .header div{
     display: flex;
   }
   .addnewship {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     z-index: 5;
     left: 30%;
     top: 30%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    }  
+    .addnewship form{
+      justify-content: space-between;
+      align-content: center;
+      
     }
+    .addnewship1 {
+      position: fixed;
+      z-index: 5;
+      left: 30%;
+      top: 30%;
+      overflow: auto;
+      background-color: rgb(255, 255, 255);
+      }
 
-
-  
+      .popup{
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        left: 30%;
+        top: 30%;  
+        padding: 10px;
+        border: solid;
+        background-color: floralwhite;
+        z-index: 5;
+      }
+      .inputfield{
+        display: flex;
+        justify-content: space-between;
+      }
+      .inputfield p{
+        padding-right: 10px;  
+      }
+      .shipsdata{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 200px;
+        padding: 10px;
+        border: solid;
+        background-color: floralwhite;
+      }
+      .body{   
+        
+        position: relative;
+        height: 85vh;
+        width: 100%;
+        z-index: 1; 
+      }
+      .footer{
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(241, 224, 183);
+        text-decoration: none;
+      }
+      .App-logo {
+        width: 80px;
+        height: 80px;
+      }
+      
+      /* Button CSS */
+      .drop-list{
+        display: block;
+        color: #111;
+        background-color: white;
+        text-align: center;
+        padding: 14px 16px;
+      }
+      .button-64{
+        display: block;
+        color: #111;
+        background-color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .button-64:hover {
+        color: white;
+        background-color: #111;
+      }

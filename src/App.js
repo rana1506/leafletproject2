@@ -5,20 +5,22 @@ import "./styles.css";
 import Box2 from "./components/Box2";
 import Header from "./components/Header";
 import GameLoop from "./components/GameLoop";
+import Footer from "./components/footer";
 //import ForExercise from "./components/ForExercise";
 export default function App() {
   
   return (
     <div className="App">   
-    <GameLoop/>  
-    {/*<ForExercise/>*/}        
+      <GameLoop/>  
+      {/*<ForExercise/>*/}        
       {<Header/>}
-      <div className="box1">
+      <div className="body">
         <LeafletComponent />
         <div className="box2">
           {<Box2/>}
         </div>
-      </div>   
+      </div> 
+      {<Footer/>}  
     </div>
   );
 
